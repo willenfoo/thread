@@ -30,14 +30,50 @@ public class ThreadSynchronized {
 					}
 				}
 			}).start();
+		 
+	/*	 new Thread(new Runnable() {
+				@Override
+				public void run() {
+					while(true) {
+						out.out2("fuwei");
+					}
+				}
+			}).start();
+		 
+		 new Thread(new Runnable() {
+				@Override
+				public void run() {
+					while(true) {
+						out.out2("willenfoo");
+					}
+				}
+			}).start();*/
+		 
+		 
+		 new Thread(new Runnable() {
+				@Override
+				public void run() {
+					while(true) {
+						out.out3("fuwei");
+					}
+				}
+			}).start();
+		 
+		 new Thread(new Runnable() {
+				@Override
+				public void run() {
+					while(true) {
+						out.out3("willenfoo");
+					}
+				}
+			}).start();
 	}
 	
-	class OutPuter {
+	static class OutPuter {
 		
 		public  void out(String name) {
 			Integer length = name.length();
-			
-			synchronized(this) {
+			synchronized(OutPuter.class) {
 				for (int i = 0; i < length; i++) {
 					System.out.print(name.charAt(i));
 				}
@@ -45,7 +81,7 @@ public class ThreadSynchronized {
 			}
 		}
 		
-		public void out2(String name) {
+		public synchronized void out2(String name) {
 			Integer length = name.length();
 			for (int i = 0; i < length; i++) {
 				System.out.print(name.charAt(i));
@@ -53,7 +89,7 @@ public class ThreadSynchronized {
 			System.out.println();
 		}
 		
-		public void out3(String name) {
+		public static synchronized void out3(String name) {
 			Integer length = name.length();
 			for (int i = 0; i < length; i++) {
 				System.out.print(name.charAt(i));
